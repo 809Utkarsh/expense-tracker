@@ -5,15 +5,20 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const configFile = require(__dirname + '/../config/config.js');
-const config = configFile[env];
+const config = require(path.join(__dirname, '/../config/config.js'))[env];
 
 const db = {};
-
 let sequelize;
-if (config.url) {
-  sequelize = new Sequelize(config.url, config);
+
+// Always use DATABASE_URL for Render
+if (config && config.url) {
+  sequelize = new Sequelize(config.url, {
+    dialect: 'postgres',
+    dialectOptions: config.dialectOptions || {},
+    logging: false,
+  });
 } else {
+  // Local fallback only
   sequelize = new Sequelize(
     config.database,
     config.username,
@@ -37,9 +42,7 @@ fs.readdirSync(__dirname)
   });
 
 Object.keys(db).forEach((modelName) => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
+  if (db[modelName].associate) db[modelName].associate(db);
 });
 
 db.sequelize = sequelize;
