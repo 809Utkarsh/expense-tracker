@@ -1,6 +1,6 @@
-Personal Expense Tracker – Backend API
-Node.js + Express + PostgreSQL + Sequelize
-1. Overview
+## Personal Expense Tracker – Backend API
+## Node.js + Express + PostgreSQL + Sequelize
+## Overview 
 
 This project is a backend-focused Personal Expense Tracker API, developed as part of a One-Day Assignment.
 
@@ -24,7 +24,8 @@ PostgreSQL integration using Sequelize
 
 Optional JWT authentication
 
-2. Objective
+## 2 - Objective
+
 
 The API enables users to:
 
@@ -46,8 +47,9 @@ Get category-wise + total summary
 
 Database storage is done in PostgreSQL (Render), using Sequelize ORM.
 
-3. Requirements
-3.1 Core API Endpoints
+## Requirements
+
+## Core API Endpoints
 Action	Method	Route
 Create Expense	POST	/api/expenses
 List All Expenses	GET	/api/expenses
@@ -65,7 +67,7 @@ amount – decimal, > 0 (required)
 
 date – date (required)
 
-3.2 Optional Bonus Features Implemented
+## Optional Bonus Features Implemented
 
 Pagination (page, limit)
 
@@ -79,7 +81,7 @@ JWT Authentication (basic)
 
 Seeder script with sample data
 
-3.3 SQL Schema (From Migrations)
+## SQL Schema (from migrations)
 
 Migration file:
 src/migrations/20251127015701-create-expense.js
@@ -119,17 +121,15 @@ GET /summary (Response)
   }
 }
 
-5. Setup Instructions
-5.1 Clone Repository
-git clone <your-repo-url>
-cd expense-tracker
+### 5 - Setup Instructions
+## Clone Repository
+## git clone <your-repo-url>
+## cd expense-tracker
+## Install Dependencies
+## npm install
 
-5.2 Install Dependencies
-npm install
-
-5.3 Configure Environment Variables
-
-Create a .env file:
+##  Configure Environment Variables
+## Create a .env file:
 
 DB_HOST=<your-host>
 DB_PORT=5432
@@ -143,21 +143,21 @@ JWT_SECRET=supersecret123
 PORT=3000
 NODE_ENV=development
 
-5.4 Run Migrations
+## Run Migrations
 npx sequelize-cli db:migrate
 
-5.5 (Optional) Seed Data
+##  (Optional) Seed Data
 npx sequelize-cli db:seed:all
 
-5.6 Start Server
+##  Start Server
 Development
 npm run dev
 
-Production
+## Production
 npm start
 
-6. API Testing (Postman)
-6.1 Authentication (Bonus)
+##  API Testing (Postman)
+## Authentication (Bonus)
 Login:
 
 POST → /auth/login
@@ -170,14 +170,14 @@ POST → /auth/login
 
 Use the returned token in Postman → Authorization → Bearer Token
 
-6.2 Expenses CRUD
+## Expenses CRUD
 Create Expense
 
 POST → /api/expenses
 
-List All Expenses
+## List All Expenses
 
-GET → /api/expenses
+## GET → /api/expenses
 
 Supports:
 
@@ -193,19 +193,19 @@ category
 
 Single Expense
 
-GET → /api/expenses/:id
+## GET → /api/expenses/:id
 
 Update
 
-PUT → /api/expenses/:id
+## PUT → /api/expenses/:id
 
 Delete
 
-DELETE → /api/expenses/:id
+## DELETE → /api/expenses/:id
 
-6.3 Summary Endpoint
+## Summary Endpoint
 
-GET → /summary
+## GET → /summary
 
 Returns:
 
@@ -213,9 +213,9 @@ total expense
 
 per-category totals
 
-6.4 Monthly Statistics
+##  Monthly Statistics
 
-GET → /api/expenses/stats/monthly
+## GET → /api/expenses/stats/monthly
 
 Example response:
 
